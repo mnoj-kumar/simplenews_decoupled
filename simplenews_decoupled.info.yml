@@ -1,12 +1,9 @@
-name: 'Simplenews Decoupled'
+name: "Simplenews Decoupled"
 type: module
-description: 'Provides a post endpoint for adding new subscribers.'
-core_version_requirement: ^9.3 || ^10
-package: 'Mail'
+description: "Provides a post endpoint for adding new subscribers."
+core_version_requirement: ^9.3 || ^10 || ^11
+package: "Mail"
 dependencies:
-  - simplenews:simplenews (>=3.0.0-beta5)
-
-# Information added by Drupal.org packaging script on 2023-05-20
-version: '1.1.0-beta1'
-project: 'simplenews_decoupled'
-datestamp: 1684582185
+  - simplenews
+version: "1.1.0"
+project: "simplenews_decoupled"
