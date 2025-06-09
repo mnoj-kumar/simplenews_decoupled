@@ -9,7 +9,6 @@
   "license": "GPL-2.0+",
   "minimum-stability": "dev",
   "require": {
-    "drupal/core": "^10 || ^11",
-    "drupal/simplenews": "^2.0"
+    "drupal/core": "^10 || ^11"
   }
 }
