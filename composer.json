@@ -1,0 +1,23 @@
+{
+    "name": "drupal/simplenews_decoupled",
+    "type": "drupal-module",
+    "description": "Provides a post endpoint for adding new subscribers.",
+    "keywords": ["Drupal", "mail"],
+    "authors": [
+        {
+            "name": "David Baetge",
+            "email": "david.baetge@gmail.com",
+            "homepage": "https://www.drupal.org/u/daveiano",
+            "role": "Maintainer"
+        }
+    ],
+    "homepage": "https://www.drupal.org/project/simplenews_decoupled",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/simplenews_decoupled",
+        "source": "https://git.drupalcode.org/project/simplenews_decoupled"
+    },
+    "license": "GPL-2.0+",
+    "require": {
+        "drupal/simplenews": "^3.0"
+    }
+}

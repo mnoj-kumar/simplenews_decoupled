@@ -1,0 +1,30 @@
+simplenews_decoupled.subscribe:
+  path: '/simplenews-decoupled/subscribe'
+  defaults:
+    _controller: '\Drupal\simplenews_decoupled\Controller\SubscribeController::createSimplenewsSubscriber'
+  methods: [POST]
+  requirements:
+    _permission: 'access content'
+    _content_type_format: json
+  options:
+    no_cache: TRUE
+
+simplenews_decoupled.confirm:
+  path: '/simplenews-decoupled/confirm/{action}/{snid}/{newsletter_id}/{timestamp}/{hash}'
+  defaults:
+    _controller: '\Drupal\simplenews_decoupled\Controller\SubscribeController::confirmSimplenewsSubscriber'
+    _title: 'Confirm newsletter subscriptions'
+  requirements:
+    _permission: 'subscribe to newsletters'
+  options:
+    no_cache: TRUE
+
+simplenews_decoupled.confirm_combined:
+  path: '/simplenews-decoupled/confirm/combined/{snid}/{timestamp}/{hash}'
+  defaults:
+    _controller: '\Drupal\simplenews_decoupled\Controller\SubscribeController::confirmSimplenewsSubscriberCombined'
+    _title: 'Confirm newsletter subscriptions'
+  requirements:
+    _permission: 'subscribe to newsletters'
+  options:
+    no_cache: TRUE

@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Contains simplenews_decoupled.module.
+ */
+
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Site\Settings;
+
+/**
+ * Implements hook_help().
+ */
+function simplenews_decoupled_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the simplenews_decoupled module.
+    case 'help.page.simplenews_decoupled':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides a post endpoint for adding new subscribers.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_tokens_alter().
+ */
+function simplenews_decoupled_tokens_alter(array &$replacements, array $context, BubbleableMetadata $bubbleable_metadata) {
+  // Rewrite simplenews subscribe url tokens for decoupling.
+  if (isset($context["tokens"]["subscribe-url"]) && isset($replacements["[simplenews-subscriber:subscribe-url]"])) {
+    $subscribe_url = $replacements["[simplenews-subscriber:subscribe-url]"];
+    $domain = parse_url($subscribe_url, PHP_URL_HOST);
+    $scheme = parse_url($subscribe_url, PHP_URL_SCHEME);
+    $decoupled = settings::get('decoupled_url');
+    $replacements["[simplenews-subscriber:subscribe-url]"] = str_replace($scheme . '://' . $domain, $decoupled, $subscribe_url);
+  }
+  if (isset($context["tokens"]["combined-url"]) && isset($replacements["[simplenews-subscriber:combined-url]"])) {
+    $subscribe_url = $replacements["[simplenews-subscriber:combined-url]"];
+    $domain = parse_url($subscribe_url, PHP_URL_HOST);
+    $scheme = parse_url($subscribe_url, PHP_URL_SCHEME);
+    $decoupled = settings::get('decoupled_url');
+    $replacements["[simplenews-subscriber:combined-url]"] = str_replace($scheme . '://' . $domain, $decoupled, $subscribe_url);
+  }
+  if (isset($context["tokens"]["unsubscribe-url"]) && isset($replacements["[simplenews-subscriber:unsubscribe-url]"])) {
+    $unsubscribe_url = $replacements["[simplenews-subscriber:unsubscribe-url]"];
+    $domain = parse_url($unsubscribe_url, PHP_URL_HOST);
+    $scheme = parse_url($unsubscribe_url, PHP_URL_SCHEME);
+    $decoupled = settings::get('decoupled_url');
+    $replacements["[simplenews-subscriber:unsubscribe-url]"] = str_replace($scheme . '://' . $domain, $decoupled, $unsubscribe_url);
+  }
+}
