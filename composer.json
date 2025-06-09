@@ -6,18 +6,10 @@
     "Drupal",
     "mail"
   ],
-  "authors": [
-    {
-      "name": "David Baetge",
-      "email": "david.baetge@gmail.com",
-      "homepage": "https://www.drupal.org/u/daveiano",
-      "role": "Maintainer"
-    }
-  ],
-  "homepage": "https://www.drupal.org/project/simplenews_decoupled",
-  "support": {
-    "issues": "https://www.drupal.org/project/issues/simplenews_decoupled",
-    "source": "https://git.drupalcode.org/project/simplenews_decoupled"
-  },
-  "license": "GPL-2.0+"
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "require": {
+    "drupal/core": "^10 || ^11",
+    "drupal/simplenews": "^2.0"
+  }
 }
